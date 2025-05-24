@@ -1,15 +1,11 @@
-import React from 'react'
-import { Card, CardHeader } from 'src/shadcnUI/components/ui/card'
 
-function CommentCard() {
+
+export const CommentCard = () => {
   return (
     <div>
-      <Card>
-        <CardHeader>
-        </CardHeader>
-      </Card>
+      card
     </div>
   )
 }
 
-export default CommentCard
+

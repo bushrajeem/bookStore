@@ -1,1 +1,2 @@
-import { Comment } from "../comment/component/CommentCard.jsx";
+
+export {CommentCard} from "./component/CommentCard.jsx"

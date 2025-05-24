@@ -1,4 +1,6 @@
 
+
+import { CommentCard } from '../../feature/comment'
 import Layout from '../../layout'
 import BreadCrumb from '../../shared/BreadCrumb'
 
@@ -10,6 +12,7 @@ function Blog() {
          <p className="text-[40px] font-bold text-[#012E4A] py-3">
           Blog Post
         </p>
+        <CommentCard />
      </div>
     </Layout>
   )
