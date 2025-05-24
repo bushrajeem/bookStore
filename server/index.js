@@ -1,6 +1,10 @@
 import express from "express"
 import {Db_Connection} from "./db-connection.js"
 import {userModel} from "./model/user.model.js"
+import dotenv from 'dotenv';
+
+
+dotenv.config();
 
 const port = 5000;
 Db_Connection();
