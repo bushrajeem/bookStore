@@ -1,8 +1,8 @@
-import express from "express"
-import {Db_Connection} from "./db-connection.js"
-import {userModel} from "./model/user.model.js"
-import dotenv from 'dotenv';
-
+import dotenv from "dotenv";
+import express from "express";
+import { Db_Connection } from "./db-connection.js";
+import { commentModel } from "./model/comment.model.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -13,22 +13,42 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/my-site", async (req, res) => {
-  
-    await userModel.create(req.body);
- 
-    res.send({
+app.use(cors())
+
+
+app.post("/comments", async (req, res) => {
+  try {
+    const response = await commentModel.create(req.body);
+
+    res.status(200).send({
       status: 200,
       message: "success",
-    }); 
+      data: response,
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: 500,
+      message: "failed",
+      data: error.message,
+    });
+  }
 });
 
-app.get("/my-site", async (req, res) => {
-    await userModel.find(req.body);
-    res.send({
+app.get("/comments", async (req, res) => {
+  try {
+    const response = await commentModel.find();
+    res.status(200).send({
       status: 200,
       message: "success",
-    }); 
+      data: response,
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: 500,
+      message: "failed",
+      data: error.message,
+    });
+  }
 });
 
 app.listen(port, () => {
